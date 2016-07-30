@@ -1,6 +1,6 @@
-## Following the JavaScript Game Tutorials from Mozilla
+##Following the JavaScript Game Tutorials from Mozilla
 
-### [Learn 2D Breakout using pure JavaScript](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
+###[Learn 2D Breakout using pure JavaScript](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
 ####Planned updates:
 + Introduction Screen, press any key to beginPath
 + Improve color scheme
@@ -8,3 +8,5 @@
   + increases speed of the ball
   + reduces the size of the bricks
   + increases rows and columns of bricks
+
+###[Learn 2D Breakout using Phaser](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser)
