@@ -46,12 +46,41 @@
       game.physics.enable(paddle, Phaser.Physics.ARCADE);
       paddle.body.immovable = true;
 
-      
+      initBricks();
+
     }
     function update() {
       game.physics.arcade.collide(ball, paddle);
       paddle.x = game.input.x || game.world.width*0.5;
     }
+    function initBricks() {
+      brickInfo = {
+        width: 50,
+        height: 20,
+        count: {
+          row: 7,
+          col: 3
+        },
+        offset: {
+          top: 50,
+          left: 60
+        },
+        padding: 10
+      }
+      bricks = game.add.group();
+      for(c=0; c<brickInfo.count.col; c++) {
+        for(r=0;r<brickInfo.count.row;r++) {
+          var brickX = (r*(brickInfo.width+brickInfo.padding))+brickInfo.offset.left;
+          var brickY = (c*(brickInfo.height+brickInfo.padding))+brickInfo.offset.top;
+          newBrick = game.add.sprite(brickX, brickY, 'brick');
+          game.physics.enable(newBrick, Phaser.Physics.ARCADE);
+          newBrick.body.immovable = true;
+          newBrick.anchor.set(0.5);
+          bricks.add(newBrick);
+        }
+      }
+    }
+
 
     function handleRemoteImages() {
       game.load.baseURL = 'https://end3r.github.io/Gamedev-Phaser-Content-Kit/demos/';
