@@ -17,6 +17,8 @@
     var bricks;
     var newBrick;
     var brickInfo;
+    var scoreText;
+    var score = 0;
 
     function preload() {
       handleRemoteImages();
@@ -30,7 +32,7 @@
     }
     function create() {
       game.physics.startSystem(Phaser.Physics.ARCADE);
-      ball = game.add.sprite(50, 50, 'ball');
+      ball = game.add.sprite(150, 150, 'ball');
       game.physics.enable(ball, Phaser.Physics.ARCADE);
       ball.body.velocity.set(150, 150);
       ball.body.collideWorldBounds = true;
@@ -47,11 +49,13 @@
       paddle.body.immovable = true;
 
       initBricks();
-
+      scoreText = game.add.text(5,5, 'Points: 0', { font: '18px Arial', fill: '#0095dd'});
     }
     function update() {
       game.physics.arcade.collide(ball, paddle);
+      game.physics.arcade.collide(ball, bricks, ballHitBrick);
       paddle.x = game.input.x || game.world.width*0.5;
+
     }
     function initBricks() {
       brickInfo = {
@@ -80,7 +84,11 @@
         }
       }
     }
-
+    function ballHitBrick(ball, brick) {
+      brick.kill();
+      score += 10;
+      scoreText.setText('Points: ' + score);
+    }
 
     function handleRemoteImages() {
       game.load.baseURL = 'https://end3r.github.io/Gamedev-Phaser-Content-Kit/demos/';
